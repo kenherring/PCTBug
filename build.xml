@@ -1,0 +1,24 @@
+<project>
+  <taskdef resource="PCT.properties" classpath="PCT.jar" />
+  <DlcHome value="C:\Progress\OpenEdge" />
+  
+  <target name="compile">
+    <PCTCompile destDir="target"
+                failOnError="false"
+                displayFiles="1">
+      <fileset dir=".">
+        <include name="*.p" />
+        <include name="*.cls" />
+      </fileset>
+    </PCTCompile>
+  </target>
+  
+  <target name="run">
+    <PCTRun procedure="target/runme">
+      <propath>
+        <pathelement path="target/" />
+      </propath>
+    </PCTRun>
+  </target>
+
+</project>
