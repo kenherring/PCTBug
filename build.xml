@@ -1,11 +1,16 @@
 <project>
   <taskdef resource="PCT.properties" classpath="PCT.jar" />
-  <DlcHome value="C:\Progress\OpenEdge" />
+  <condition property="DlcHome" value="C:\Progress\OpenEdge"><available file="C:\Progress\OpenEdge" type="dir"/></condition>
+  <condition property="DlcHome" value="/psc/dlc"><available file="/psc/dlc" type="dir"/></condition>
+  <DlcHome value="${DlcHome}" />
   
   <target name="compile">
     <PCTCompile destDir="target"
                 failOnError="false"
                 displayFiles="1">
+      <propath>
+        <pathelement path="." />
+      </propath>
       <fileset dir=".">
         <include name="*.p" />
         <include name="*.cls" />
@@ -14,9 +19,9 @@
   </target>
   
   <target name="run">
-    <PCTRun procedure="target/runme">
+    <PCTRun procedure="target/runme.r">
       <propath>
-        <pathelement path="target/" />
+        <pathelement path="target" />
       </propath>
     </PCTRun>
   </target>
