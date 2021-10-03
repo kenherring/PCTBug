@@ -19,7 +19,7 @@
   </target>
   
   <target name="run">
-    <PCTRun procedure="target/runme.r">
+    <PCTRun procedure="runme.r">
       <propath>
         <pathelement path="target" />
       </propath>
